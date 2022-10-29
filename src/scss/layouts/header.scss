@@ -1,0 +1,171 @@
+.header {
+	position: absolute;
+	width: 100%;
+	top: 0;
+	left: 0;
+	z-index: 5;
+	background-color: rgba(0, 0, 0, 0.6);
+	&__top {
+		display: flex;
+		align-items: center;
+		min-height: rem(70);
+
+		@media (min-width: $mob) {
+			@include adaptiveValue("min-height", 80, 50);
+		}
+	}
+
+	&__logo {
+		margin-right: auto;
+		position: relative;
+		z-index: 5;
+		img {
+			@include adaptiveValue("width", 170, 120);
+		}
+	}
+
+	&__lang-switcher {
+		display: none;
+
+		@media (min-width: $mob) {
+			display: flex;
+			align-items: center;
+			@include adaptiveValue("margin-right", 60, 20);
+		}
+	}
+
+	&__lang-switcher-mob {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	&__connection {
+		display: none;
+
+		@media (min-width: $mobSmall) {
+			position: relative;
+			z-index: 5;
+			display: flex;
+		}
+	}
+
+	&__connection-mob {
+		display: flex;
+		margin-top: rem(20);
+
+		@media (min-width: $mobSmall) {
+			display: none;
+		}
+	}
+
+	&__icon {
+		display: block;
+
+		@media (min-width: $mobSmall) {
+			margin-left: rem(30);
+		}
+		@media (min-width: $mob) {
+			display: none;
+		}
+	}
+
+	&__bottom {
+		display: none;
+
+		@media (min-width: $mob) {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			@include adaptiveValue("min-height", 50, 30);
+		}
+	}
+
+	&__menu-mob {
+		display: flex;
+		flex-direction: column;
+		row-gap: rem(30);
+
+		@media (min-width: $mob) {
+			display: none;
+		}
+	}
+}
+
+.lang-switcher {
+	&__item {
+		font-size: rem(14);
+
+		@media (min-width: $mob) {
+			@include adaptiveValue("font-size", 14, 12);
+		}
+	}
+
+	&__item--active {
+		padding: rem(5) rem(10);
+	}
+
+	&__separator {
+		display: inline-block;
+		transform: translateY(rem(-1));
+		cursor: default;
+	}
+
+	&__link {
+		display: inline-block;
+		padding: rem(5) rem(10);
+		transition: all var(--anim);
+		&:hover {
+			color: var(--accent);
+			transform: translateY(rem(-3));
+		}
+	}
+}
+
+.connection-header {
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	row-gap: rem(4);
+	white-space: nowrap;
+	&__link {
+		letter-spacing: 0.08em;
+		display: inline-block;
+		padding: rem(8) 0 rem(3);
+
+		@media (any-hover: hover) {
+			transition: color var(--anim);
+		}
+		@media (min-width: $mobSmall) {
+			@include adaptiveValue("font-size", 15, 12);
+		}
+	}
+
+	&__callback {
+		font-size: rem(14);
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		padding: rem(3) 0 rem(5);
+		position: relative;
+		&::before {
+			content: "";
+			position: absolute;
+			top: 100%;
+			left: 0;
+			width: 100%;
+			border-bottom: rem(2) solid var(--accent);
+			transform: scaleX(0);
+			transition: transform 0.5s ease;
+		}
+		&:hover::before {
+			transform: scale(1);
+		}
+
+		@media (min-width: $mobSmall) {
+			@include adaptiveValue("font-size", 13, 10);
+		}
+		@media (min-width: $tab) {
+			padding: rem(3) 0 rem(8);
+		}
+	}
+}
